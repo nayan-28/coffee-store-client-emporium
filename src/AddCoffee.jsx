@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddCoffee = () => {
   const handleAddCoffee = (e) => {
     e.preventDefault();
@@ -20,7 +22,25 @@ const AddCoffee = () => {
       details,
       photo,
     };
-    console.log(newCoffee);
+
+    fetch("http://localhost:5000/coffee", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "success!",
+            text: "User Created Successfully",
+            icon: "success",
+            confirmButtonText: "Close",
+          });
+        }
+      });
   };
   return (
     <div className="bg-[#F4F3F0] p-24">
