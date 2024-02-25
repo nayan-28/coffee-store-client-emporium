@@ -1,6 +1,7 @@
 import { FaEye } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { ImBin } from "react-icons/im";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee }) => {
@@ -52,9 +53,11 @@ const CoffeeCard = ({ coffee }) => {
             <button className="btn join-item bg-green-200">
               <FaEye className="text-3xl"></FaEye>
             </button>
-            <button className="btn join-item bg-gray-300">
-              <FaEdit className="text-3xl"></FaEdit>
-            </button>
+            <Link to={`updateCoffee/${_id}`}>
+              <button className="btn join-item bg-gray-300">
+                <FaEdit className="text-3xl"></FaEdit>
+              </button>
+            </Link>
             <button
               className="btn join-item bg-red-400"
               onClick={() => handleDelete(_id)}
