@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const User = () => {
   const loadedUsers = useLoaderData();
+  const [users, setUsers] = useState(loadedUsers);
   return (
     <div>
       <h1 className="text-3xl text-center py-6">Users:{loadedUsers.length}</h1>
